@@ -53,10 +53,10 @@ t.Translate(-0.5/density, -0.5/density, -0.5/density)
 
 trans = vtk.vtkTransformPolyDataFilter()
 trans.SetTransform(t)
-trans.SetInputData(plane.GetOutput())
+trans.SetInputConnection(plane.GetOutputPort())
 
 probe = vtk.vtkProbeFilter()
-probe.SetInputData(trans.GetOutput())
+probe.SetInputConnection(trans.GetOutputPort())
 probe.SetSourceData(grid)
 
 outline = vtk.vtkOutlineFilter()
